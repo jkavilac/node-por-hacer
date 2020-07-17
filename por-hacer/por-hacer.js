@@ -27,6 +27,19 @@ const getListado = () => {
     return listadoPorHacer;
 }
 
+const getListadoPorEstatus = (completado) => {
+
+    cargarDB();
+    
+    let nuevoListado = listadoPorHacer.filter( tarea => tarea.completado === completado);
+    console.log("Entro a filtro");
+    if ( listadoPorHacer.length === nuevoListado.length) {
+        return listadoPorHacer;
+    } else {
+        return nuevoListado;        
+    }
+}
+
 const crear = ( descripcion ) => {
 
     cargarDB();
@@ -78,6 +91,7 @@ module.exports = {
     crear,
     getListado,
     actualizar,
-    borrar
+    borrar,
+    getListadoPorEstatus
 }
 
